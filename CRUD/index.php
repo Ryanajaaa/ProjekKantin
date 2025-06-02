@@ -127,9 +127,6 @@ $result = $conn->query("SELECT * FROM makanan");
       <li>Masukkan jumlah yang ingin dibeli.</li>
       <li>QR Dummy akan muncul sebagai bukti pembelian.</li>
     </ol>
-    <div class="text-center">
-      <img src="dummy.png" alt="QR Dummy" class="img-thumbnail" style="max-width: 200px;" />
-    </div>
   </div>
 </section>
 
