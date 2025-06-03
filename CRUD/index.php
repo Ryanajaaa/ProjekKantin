@@ -1,17 +1,17 @@
 <?php
 include 'koneksi.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah'])) {
-  $nama = $_POST['nama'];
-  $kantin = $_POST['kantin'];
-  $harga = $_POST['harga'];
-  $stok = $_POST['stok'];
-  $gambar = $_FILES['gambar']['name'];
-  $tmp_name = $_FILES['gambar']['tmp_name'];
+// if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['tambah'])) {
+//   $nama = $_POST['nama'];
+//   $kantin = $_POST['kantin'];
+//   $harga = $_POST['harga'];
+//   $stok = $_POST['stok'];
+//   $gambar = $_FILES['gambar']['name'];
+//   $tmp_name = $_FILES['gambar']['tmp_name'];
 
-  move_uploaded_file($tmp_name, "gambar/$gambar");
-  $conn->query("INSERT INTO makanan (nama, kantin, harga, stok, gambar) VALUES ('$nama', '$kantin', $harga, $stok, '$gambar')");
-}
+//   move_uploaded_file($tmp_name, "gambar/$gambar");
+//   $conn->query("INSERT INTO makanan (nama, kantin, harga, stok, gambar) VALUES ('$nama', '$kantin', $harga, $stok, '$gambar')");
+// }
 
 // //(DELETE)
 // if (isset($_GET['hapus'])) {
@@ -53,22 +53,43 @@ $result = $conn->query("SELECT * FROM makanan");
 
 <section id="about" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-4">About Kantin</h2>
-    <div class="row align-items-center">
-      <div class="col-md-6">
-        <p>Kantin sekolah kami menyediakan makanan sehat dan bergizi dengan berbagai pilihan menu favorit siswa.</p>
+     <h2 class="mb-4">About Kantin</h2>
+    <!-- Logo Kantin -->
+    <div class="text-center mb-4">
+      <img src="logo t.png" alt="Logo Kantin" style="max-width: 150px; height: auto;">
+    </div>
+
+
+    <!-- Baris untuk video -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/3AWQnv6g9sk?si=L35fxmTgj-IIs4_H"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <div class="col-md-6">
-        <img src="kantin.jpg" alt="Kantin" class="img-fluid rounded mb-3" style="max-width: 800px; height: auto;"  />
+    </div>
+
+    <!-- Baris untuk gambar dan teks -->
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3">
+        <img src="kantin.jpg" alt="Kantin" class="img-fluid rounded" style="width: 100%; height: auto;" />
+      </div>
+      <div class="col-md-6 mb-3">
+        <p>
+          Kantin sekolah kami menyediakan makanan sehat dan bergizi dengan berbagai pilihan menu favorit siswa.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="cafelist" class="py-5">
-  <div class="text-center mt-4">
-  <a href="pesan.php" class="btn btn-success btn-lg">Pesan Sekarang</a>
+
+
+
 </div>
+<section id="cafelist" class="py-5">
   <div class="container">
     <h2 class="mb-4">Cafetaria List</h2>
     <div class="row row-cols-1 row-cols-md-4 g-4">
@@ -83,12 +104,14 @@ $result = $conn->query("SELECT * FROM makanan");
               <strong>Harga:</strong> Rp<?php echo number_format($row['harga'], 0, ',', '.'); ?><br />
               <strong>Stok:</strong> <?php echo $row['stok']; ?>
             </p>
-            <a href="?hapus= <?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus?')">Hapus</a>
           </div>
         </div>
       </div>
       <?php endwhile; ?>
     </div>
+    <div class="text-center mt-4">
+  <a href="pesan.php" class="btn btn-success btn-lg">Pesan Sekarang</a>
+</div>
   </div>
 </section>
 
