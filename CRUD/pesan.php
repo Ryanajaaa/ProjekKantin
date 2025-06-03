@@ -55,7 +55,7 @@ $makanan = $conn->query("SELECT * FROM makanan");
       <p>Scan QR berikut untuk menyelesaikan pembayaran:</p>
       <img src="dummy.png" alt="QR Dummy" class="img-thumbnail" style="max-width: 200px;">
     </div>
-    <a href="index.php" class="btn btn-primary mt-4">Kembali ke Beranda</a>
+    <a href="index.php?status=success" class="btn btn-primary mt-4">Kembali ke Beranda</a>
   
   <?php else: ?>
     <form method="post">
