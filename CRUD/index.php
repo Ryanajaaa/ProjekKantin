@@ -22,6 +22,8 @@ include 'koneksi.php';
 // }
 
 $result = $conn->query("SELECT * FROM makanan");
+$result = $conn->query("SELECT * FROM namakantin");
+
 ?>
 
 <!DOCTYPE html>
@@ -96,13 +98,12 @@ $result = $conn->query("SELECT * FROM makanan");
       <?php while ($row = $result->fetch_assoc()): ?>
       <div class="col">
         <div class="card h-100 shadow-sm">
-          <img src="gambar/<?php echo htmlspecialchars($row['gambar']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row['nama']); ?>" />
+          <img src="gambarkantin/<?php echo htmlspecialchars($row['gambar']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($row['nama']); ?>" />
           <div class="card-body">
             <h5 class="card-title"><?php echo htmlspecialchars($row['nama']); ?></h5>
             <p class="card-text">
               <strong>Kantin:</strong> <?php echo htmlspecialchars($row['kantin']); ?><br />
               <strong>Harga:</strong> Rp<?php echo number_format($row['harga'], 0, ',', '.'); ?><br />
-              <strong>Stok:</strong> <?php echo $row['stok']; ?>
             </p>
           </div>
         </div>
@@ -179,5 +180,10 @@ $result = $conn->query("SELECT * FROM makanan");
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php if (isset($_GET['status']) && $_GET['status'] === 'success'): ?>
+  <script>
+    alert("Pesanan berhasil dilakukan!");
+  </script>
+<?php endif;?>
 </body>
 </html>
